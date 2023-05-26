@@ -16,4 +16,6 @@ node{
     }
   }
     stage('upload war to nexus'){
+        nexusArtifactUploader artifacts: [[artifactId: 'studentapp', classifier: '', file: 'target/studentapp-2.5-SNAPSHOT.war', type: 'war']], credentialsId: 'nexusrepo', groupId: 'com.jdevs', nexusUrl: '13.114.54.181:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'student-snapshot', version: '2.5-SNAPSHOT'
+}
 }
