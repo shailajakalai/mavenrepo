@@ -15,4 +15,5 @@ node{
       -D sonar.host.url=http://54.249.129.77:9000/"
     }
   }
+    stage('upload war to nexus'){
 }
