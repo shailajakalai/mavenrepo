@@ -4,16 +4,15 @@ node{
         git credentialsId: 'GIT-Credentials', url: 'https://github.com/shailajakalai/mavenrepo.git'
     }
     
-    stage('Maven Build'){
-        def mavenHome = tool name: "Maven-3.8.6", type: "maven"
-        def mavenCMD = "${mavenHome}/bin/mvn"
-        sh "${mavenCMD} clean package"
+    stage('SonarQube analysis') {
+    def scannerHome = tool 'sonar-server';
+    withSonarQubeEnv('sonar-server') {
+      sh "${scannerHome}/bin/sonar-scanner \
+      -D sonar.login=admin \
+      -D sonar.password=admin123 \
+      -D sonar.projectKey=sonarqubetest \
+      -D sonar.exclusions=vendor/**,resources/**,**/*.java \
+      -D sonar.host.url=http://54.249.129.77:9000/"
     }
-    
-    stage('SonarQube analysis') {       
-        withSonarQubeEnv('sonar-server') {
-       	sh "mvn sonar:sonar"    	
-    }
-        
-       }    
+  }
 }
