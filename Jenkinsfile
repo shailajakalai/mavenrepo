@@ -10,7 +10,7 @@ node{
       sh "${scannerHome}/bin/sonar-scanner \
       -D sonar.login=admin \
       -D sonar.password=admin123 \
-      -D sonar.projectKey=sonarqubetest \
+      -D sonar.projectKey=studentapp \
       -D sonar.exclusions=vendor/**,resources/**,**/*.java \
       -D sonar.host.url=http://54.249.129.77:9000/"
     }
